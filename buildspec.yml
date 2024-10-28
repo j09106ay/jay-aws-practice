@@ -2,8 +2,7 @@ version: 0.2
 
 env:
   secrets-manager:
-    AWS_ACCOUNT_ID: /secret/application/AWS_ACCOUNT_ID
-
+    AWS_ACCOUNT_ID: /secret/application
 phases:
   pre_build:
     commands:
