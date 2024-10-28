@@ -15,7 +15,7 @@ phases:
       - echo $DB_CRED
       - echo $SECRET_MANAGER_DETAILS | sed -n 's/.*"AWS_ACCOUNT_ID":"\([^"]*\)".*/\1/p'
       - echo $Test
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $SECRET_MANAGER_DETAILS.AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $DB_CRED.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - REPOSITORY_URI=857810270983.dkr.ecr.ap-southeast-1.amazonaws.com/jay-aws-registry
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
