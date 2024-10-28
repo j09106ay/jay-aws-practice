@@ -7,8 +7,6 @@ phases:
       - mvn clean install
       - echo Logging in to Amazon ECR...
       - aws --version
-      - echo "AWS default region is: $AWS_DEFAULT_REGION"
-      - echo "AWS account id is: $AWS_ACCOUNT_ID"
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - REPOSITORY_URI=857810270983.dkr.ecr.ap-southeast-1.amazonaws.com/jay-aws-registry
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
