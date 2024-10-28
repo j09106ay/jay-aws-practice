@@ -11,7 +11,7 @@ phases:
       - aws --version
       - echo $AWS_DEFAULT_REGION
       - echo $SECRET_MANAGER_DETAILS
-      - DB_CRED=$(aws secretsmanager get-secret-value --secret-id /secret/application --query SecretString --output text | sed -n 's/.*"AWS_ACCOUNT_ID":"\([^"]*\)".*/\1/p'))
+      - DB_CRED=$(aws secretsmanager get-secret-value --secret-id /secret/application --query SecretString --output text | sed -n 's/.*"AWS_ACCOUNT_ID":"\([^"]*\)".*/\1/p')
       - echo $DB_CRED
       - echo $SECRET_MANAGER_DETAILS | sed -n 's/.*"AWS_ACCOUNT_ID":"\([^"]*\)".*/\1/p'
       - echo $Test
