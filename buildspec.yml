@@ -10,7 +10,8 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - echo $AWS_DEFAULT_REGION
-      - echo $SECRET_MANAGER_DETAILS.AWS_ACCOUNT_ID
+      - echo $SECRET_MANAGER_DETAILS
+      - echo $SECRET_MANAGER_DETAILS | sed -n 's/.*"AWS_ACCOUNT_ID":"\([^"]*\)".*/\1/p'
       - echo $Test
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $SECRET_MANAGER_DETAILS.AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - REPOSITORY_URI=857810270983.dkr.ecr.ap-southeast-1.amazonaws.com/jay-aws-registry
